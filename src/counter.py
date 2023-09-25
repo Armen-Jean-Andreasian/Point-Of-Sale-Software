@@ -1,4 +1,4 @@
-import database
+from database import database
 
 
 class BarcodeScanner:

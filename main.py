@@ -3,14 +3,17 @@ from src.supermarket_customization import SupermarketDetails
 from src.pdf_composer import PdfGenerator
 from src.counter import BarcodeScanner
 
+from database.item_registration import stock_registration
+
+# Point of sales -----
 current_time = Time.current_time()
 supermarket_information = SupermarketDetails.get_supermarket_details()
 
-barcode_scanner_on = BarcodeScanner()
+pay_for_products = BarcodeScanner()  # input taking object
 
 
 def main():
-    local_receipt, local_total = barcode_scanner_on.point_of_sales()
+    local_receipt, local_total = pay_for_products.point_of_sales()  # input -> tuple[dict, float]
 
     pdf_generator = PdfGenerator(
         receipt=local_receipt,
@@ -21,5 +24,26 @@ def main():
     pdf_generator.start()
 
 
+# Staff only. Adding new items to stock -----
+def add():
+    return stock_registration()
+
+
 if __name__ == '__main__':
-    main()
+    while True:
+        welcome = input('1 - Add items \n'
+                        '2 - Check out products\n'
+                        '3 - Exit the program'
+                        'Your Choice: ')
+        match welcome:
+            case '1':
+                add()
+                print('Thanks for using POSS! Goodbye')
+                break
+            case '2':
+                main()
+                print('Thanks for using POSS! Goodbye')
+                break
+            case '3':
+                print('Thanks for using POSS! Goodbye')
+                break

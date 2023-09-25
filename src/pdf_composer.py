@@ -28,6 +28,8 @@ class PdfGenerator:
         self.pdf.ln(10)  # Add a breakline
         self.add_total()
         self.save_file()
+        print('\nThe receipt was generated! \n'
+              f'Check {self.destination_folder}/{self.filename}\n')
 
     def add_logo(self):
         """ Adds logo on the top left """

@@ -1,6 +1,13 @@
 import sqlite3
+import os
 
-connection = sqlite3.connect(database='Store.db')
+# Connect to the database using the constructed path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(current_dir, 'store.db')
+
+
+connection = sqlite3.connect(db_path)
+
 cursor = connection.cursor()
 
 __all__ = ['get_item_by_name', 'get_item_by_id', 'add_new_item']

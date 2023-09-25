@@ -1,0 +1,8 @@
+database/
+    database.py
+    store.db
+files/
+reports/
+src/
+tests/
+main.py
