@@ -1,7 +1,8 @@
 from database.database import add_new_item
+from src.stock_maganagment.stock_products import available_products
 
 
-def stock_registration():
+def stock_registration(destination_folder=None):
     # format: [(1, 'Coca-cola', 1.25)]
 
     product = tuple[int, str, float]
@@ -23,6 +24,12 @@ def stock_registration():
             print(add_new_item([product]))  # to show messages
             continue
 
+    if not destination_folder:
+        available_products(destination_folder='reports')
+        print('PDF was generated')
+    else:
+        available_products(destination_folder)
+
 
 if __name__ == '__main__':
-    stock_registration()
+    stock_registration(destination_folder='../../reports')

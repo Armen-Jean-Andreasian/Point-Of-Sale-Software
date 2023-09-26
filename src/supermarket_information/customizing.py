@@ -1,4 +1,20 @@
-from src.supermarket_customization import SupermarketDetails
+"""
+Supermarket Customization Script
+
+This script allows users to view and customize supermarket information using the SupermarketDetails class.
+
+Menu Options:
+- Users can choose to view or edit supermarket details.
+- Viewing supermarket details displays the current details.
+- Editing options allow users to change the logo, name, address, or operating hours.
+
+Usage:
+1. Run the script and follow the menu prompts.
+2. Provide input as instructed to make changes.
+
+"""
+
+from src.supermarket_information.supermarket_customization import SupermarketDetails
 
 
 def customize():

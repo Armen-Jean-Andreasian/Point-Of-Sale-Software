@@ -6,7 +6,7 @@ class SupermarketDetails:
     supermarket_name: str = '7 Eleven'
     supermarket_address: str = 'Shau Kei Wan, Hong Kong'
     supermarket_operates: str = 'Mon-Sat 6AM-12AM'
-    destination_folder: str = 'reports'
+    destination_folder: str = 'reports/receipts'
 
     @classmethod
     def get_supermarket_details(cls) -> tuple:

@@ -5,7 +5,8 @@ import os
 class PdfGenerator:
     pdf = FPDF(orientation='P', unit='pt', format='A5')
 
-    def __init__(self, receipt: dict, total: float, supermarket: tuple, current_time: str) -> object:
+    def __init__(self, receipt: dict, total: float, supermarket: tuple, current_day: str, current_time: str) -> object:
+
         self.receipt = receipt
         self.total = total
         self.supermarket_logo = supermarket[0]
@@ -13,6 +14,7 @@ class PdfGenerator:
         self.supermarket_address = supermarket[2]
         self.supermarket_operates = supermarket[3]
         self.destination_folder = supermarket[4]
+        self.current_day = current_day
         self.current_time = current_time
 
         self.filename = f'{self.supermarket_name}_{current_time.replace(":", "-")}'
@@ -29,7 +31,7 @@ class PdfGenerator:
         self.add_total()
         self.save_file()
         print('\nThe receipt was generated! \n'
-              f'Check {self.destination_folder}/{self.filename}\n')
+              f'Check {self.destination_folder}/{self.current_day}-{self.filename}.pdf\n')
 
     def add_logo(self):
         """ Adds logo on the top left """
@@ -100,6 +102,24 @@ class PdfGenerator:
         self.pdf.cell(w=total_x, h=30, txt='', border=0)  # Empty space before the total
         self.pdf.cell(w=total_width, h=30, txt=f"Total: ${self.total:.2f}", border=0, ln=1, align='C')  # Centered Total
 
-    def save_file(self):
-        # Save the PDF to the reports folder
-        self.pdf.output(os.path.join(self.destination_folder, f'{self.filename}.pdf'))
+    # def save_file(self):
+    #     # Save the PDF to the reports folder
+    #     self.pdf.output(os.path.join(self.destination_folder, f'{self.current_day}-{self.filename}.pdf'))
+
+    def save_file(self) -> None:
+        """
+        Saves the PDF file within a folder named after the current day in the specified destination folder.
+
+        This method creates a folder with the current day's name within the destination folder if it doesn't exist
+        and saves the PDF file in that folder.
+
+        """
+        # Create the folder for the current day if it doesn't exist
+        day_folder = os.path.join(self.destination_folder, self.current_day)
+        if not os.path.exists(day_folder):
+            os.makedirs(day_folder)
+
+        # Save the PDF within the day's folder
+        pdf_path = os.path.join(day_folder, f'{self.current_day}-{self.filename}.pdf')
+        self.pdf.output(pdf_path)
+
