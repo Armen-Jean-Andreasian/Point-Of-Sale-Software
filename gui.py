@@ -4,7 +4,7 @@ from src.point_of_sales.pdf.current_time import Time
 from src.supermarket_information.supermarket_customization import SupermarketDetails
 from src.point_of_sales.pdf.pdf_composer import PdfGenerator
 from src.point_of_sales.counter import BarcodeScanner
-from src.stock_maganagment.product_registration import stock_registration
+from src.stock_management.product_registration import stock_registration
 from src.supermarket_information.customizing import customize
 
 

@@ -1,0 +1,48 @@
+database/
+    database.py
+    store.db
+
+
+files/
+    logos/
+        logo_samples.png
+
+    design.txt
+    pdf_structure.txt
+    project_structure.txt
+    readme.txt
+
+
+reports/
+    receipts/
+        2023-09-26/
+            2023-09-26 7 Eleven_18-21-39.pdf
+
+    stock_reports/
+        stock_2023-09-26.pdf
+
+
+src/
+    point_of_sales/
+        pdf/
+            current_time.py
+            pdf_composer.py
+
+    stock_management/
+        product_registration.py
+        stock_products.py
+
+    supermarket_information/
+        customizing.py
+        supermarket_customization.py
+
+
+tests/
+    db_connection_test.py
+    db_insert_test.py
+    getting_current_time.py
+
+.gitignore
+gui.py
+main.py
+README.md

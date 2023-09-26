@@ -21,11 +21,14 @@ def customize():
     while True:
         user_input = input('1 - View supermarket details \n'
                            '2 - Edit supermarket details\n'
+                           '3 - Exit the program\n'
                            'Your Choice: ')
         match user_input:
             case '1':
                 print('')
                 print(SupermarketDetails.get_supermarket_details())
+            case '3':
+                break
             case '2':
                 choice = input('1 - Change the logo  \n'
                                '2 - Edit supermarket name\n'

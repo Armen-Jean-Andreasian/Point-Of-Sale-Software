@@ -1,3 +1,31 @@
+"""
+PdfGenerator: Generates PDF receipts for a supermarket.
+
+This module defines the PdfGenerator class, which is responsible for creating PDF receipts
+for supermarket purchases. It includes methods for adding supermarket information, receipt details,
+and saving the generated PDF files.
+
+Classes:
+    PdfGenerator: Generates PDF receipts for a supermarket.
+
+Usage:
+    The PdfGenerator class is designed to create PDF receipts for supermarket transactions.
+    It requires receipt details, supermarket information, and current date and time to generate receipts.
+
+Example:
+    # Create a PdfGenerator instance
+    receipt_details = {'Milky Way': [1, 9.2], 'Backpack (Nike)': [2, 801.0]}
+    total_cost = 810.2
+    supermarket_info = ('files/logo.png', 'Supermart', '123 Main St, City', 'Open: 9AM - 9PM', 'reports/receipts')
+    current_day = '2023-09-26'
+    current_time = '18:21:39'
+    pdf_gen = PdfGenerator(receipt_details, total_cost, supermarket_info, current_day, current_time)
+
+    # Generate and save the PDF receipt
+    pdf_gen.start()
+"""
+
+
 from fpdf import FPDF
 import os
 
@@ -6,7 +34,15 @@ class PdfGenerator:
     pdf = FPDF(orientation='P', unit='pt', format='A5')
 
     def __init__(self, receipt: dict, total: float, supermarket: tuple, current_day: str, current_time: str) -> object:
+        """
+        Initializes a PdfGenerator instance.
 
+        :param receipt: A dictionary containing the receipt details.
+        :param total: The total cost of the items in the receipt.
+        :param supermarket: A tuple containing supermarket information (logo path, name, address, operates, destination)
+        :param current_day: The current day in the format 'YYYY-MM-DD'.
+        :param current_time: The current time in the format 'HH:MM:SS'.
+        """
         self.receipt = receipt
         self.total = total
         self.supermarket_logo = supermarket[0]
@@ -20,6 +56,10 @@ class PdfGenerator:
         self.filename = f'{self.supermarket_name}_{current_time.replace(":", "-")}'
 
     def start(self):
+        """
+        Starts the PDF generation process by adding the necessary elements to the PDF document,
+        saving the document, and displaying a success message.
+        """
         self.pdf.add_page()
         self.add_logo()
         self.add_name()
@@ -122,4 +162,3 @@ class PdfGenerator:
         # Save the PDF within the day's folder
         pdf_path = os.path.join(day_folder, f'{self.current_day}-{self.filename}.pdf')
         self.pdf.output(pdf_path)
-

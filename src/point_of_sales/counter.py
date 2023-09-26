@@ -1,14 +1,57 @@
+"""
+BarcodeScanner: Utility class for scanning product barcodes and generating receipts.
+
+This module defines the BarcodeScanner class, which allows you to simulate a point of sale system.
+It scans product barcodes, adds them to a receipt, and calculates the total sum of the purchase.
+
+Classes:
+    BarcodeScanner: Utility class for scanning product barcodes and generating receipts.
+
+Methods:
+    point_of_sales: Simulate a point of sale system, allowing the user to scan product barcodes and generate receipts.
+
+Usage:
+    The BarcodeScanner class provides a basic point of sale functionality for scanning product barcodes.
+    You can use the 'point_of_sales' method to interactively scan barcodes and create receipts.
+
+Examples:
+    scanner = BarcodeScanner()
+    receipt, total_sum = scanner.point_of_sales()
+
+    # After scanning products, you can access the receipt and total sum.
+    print("Receipt:", receipt)
+    print("Total Sum:", total_sum)
+
+"""
+
+
 from database import database
 
 
 class BarcodeScanner:
-    receipt = dict()  # {'name': [10, 400.2], }
+    receipt = dict()  # Should look like {'name': [10, 400.2], }
     total_sum = 0
 
     def point_of_sales(self) -> tuple[dict, float]:
         """
-        :return: (receipt, total)
-        :rtype: tuple[dict, float]
+        Simulate a point of sale system, allowing the user to scan product barcodes and generate receipts.
+
+        Returns:
+            tuple: A tuple containing the receipt (a dictionary) and the total sum (a float).
+
+        Usage:
+            scanner = BarcodeScanner()
+            receipt, total_sum = scanner.point_of_sales()
+
+            # After scanning products, you can access the receipt and total sum.
+            print("Receipt:", receipt)
+            print("Total Sum:", total_sum)
+
+        Raises:
+            Exception: Raised for incorrect barcode input.
+
+        Returns:
+            tuple[dict, float]: A tuple containing the receipt (a dictionary) and the total sum (a float).
         """
 
         while True:

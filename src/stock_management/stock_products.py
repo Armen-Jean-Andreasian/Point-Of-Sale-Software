@@ -1,9 +1,44 @@
+"""
+Stock Products: Utility module for generating stock reports in PDF format.
+
+This module provides functionality for generating PDF reports of available products in the stock.
+
+Functions:
+    generate_pdf: Generates a PDF report of available products in the stock.
+    available_products: Function to generate the PDF report of available products.
+
+Usage:
+    The 'available_products' function generates a PDF report of available products in the stock.
+    You can specify the destination folder for the report. If no folder is provided, it will use the default folder.
+
+Examples:
+    To generate a PDF report of available products directly:
+    available_products(destination_folder='../../reports/stock_reports')
+
+    To generate a PDF report of available products in the default folder:
+    available_products()
+
+"""
+
+
 from database.database import get_all_items
 from fpdf import FPDF
 from datetime import date
 
 
 def generate_pdf(products, destination_folder, pdf=FPDF()):
+    """
+        Generates a PDF report of available products in the stock.
+
+        Args:
+            products (list): A list of product information as tuples (id, name, price).
+            destination_folder (str): The destination folder for saving the PDF report.
+            pdf (FPDF, optional): An FPDF instance for creating the PDF report. Defaults to FPDF().
+
+        Returns:
+            None
+        """
+
     # Get today's date in the 'YYYY-MM-DD' format
     todays_date = date.today().strftime('%Y-%m-%d')
 
@@ -38,9 +73,16 @@ def generate_pdf(products, destination_folder, pdf=FPDF()):
 
 def available_products(destination_folder=None):
     """
-    Function to generate the PDF report
-    :return: None
+    Function to generate the PDF report of available products.
+
+    Args:
+        destination_folder (str, optional): The destination folder for saving the PDF report.
+            If not provided, it will use the default folder.
+
+    Returns:
+        None
     """
+
     if not destination_folder:
         destination_folder = 'reports/stock_reports'
     products = get_all_items()

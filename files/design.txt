@@ -1,0 +1,32 @@
+Supermarket Counter that pings the zipcode and sends a request by id to a database
+
+Check is being noted the name : amount : price_item
+    if name in check -> check[amount] +1
+        total_price_name = amount * price_item
+
+Receipt dict has {name: [{amount: num}, {price_one_item: num}, {total_price_lot: num} ] } format
+    if name in Receipt
+    Lines  name : amount : total_price_name
+
+    if name in Receipt:
+
+
+database:
+    id: name : price
+
+    add new item:
+        by id
+            if id is not occupied
+                and name is not occupied
+
+request:
+    id
+
+count
+    by id
+        amount += 1
+        price * amount
+        total += price
+
+total
+    return total

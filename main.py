@@ -1,3 +1,26 @@
+"""
+Supermarket Point of Sale System
+
+This module contains the implementation of a Point of Sale System (POS) for a supermarket. The system allows users
+to check available products, add new items to stock, check out products, and edit supermarket information. It also
+provides the functionality to generate PDF receipts for purchases.
+
+Modules:
+    - pdf-related imports
+    - supermarket info-related imports
+    - stock-related imports
+    - point of sales-related imports
+
+Global Variables:
+    - current_time: The current time in 'HH:MM:SS' format.
+    - current_day: The current date in 'YYYY-MM-DD' format.
+    - supermarket_information: Details about the supermarket, including its logo, name, address, and operating hours.
+
+Functions:
+    - main: The main function that initiates the Point of Sale System.
+    - add: Function to add new items to the stock.
+"""
+
 # pdf-related imports
 from src.point_of_sales.pdf.current_time import Time
 from src.point_of_sales.pdf.pdf_composer import PdfGenerator
@@ -7,8 +30,8 @@ from src.supermarket_information.supermarket_customization import SupermarketDet
 from src.supermarket_information.customizing import customize
 
 # stock-related imports
-from src.stock_maganagment.product_registration import stock_registration
-from src.stock_maganagment.stock_products import available_products
+from src.stock_management.product_registration import stock_registration
+from src.stock_management.stock_products import available_products
 
 # point of sales-related imports
 from src.point_of_sales.counter import BarcodeScanner
@@ -39,10 +62,10 @@ def add():
     return stock_registration()
 
 
-if __name__ == '__main__':
+def start_point_of_sale():
     while True:
         welcome = input('0 - Check available products\n'
-                        '1 - Add items \n'
+                        '1 - Add items\n'
                         '2 - Check out products\n'
                         '3 - Edit supermarket information\n'
                         '4 - Exit the program\n'
@@ -65,3 +88,7 @@ if __name__ == '__main__':
             case '4':
                 print('Thanks for using POSS! Goodbye')
                 break
+
+
+if __name__ == '__main__':
+    start_point_of_sale()
