@@ -2,8 +2,8 @@
 Supermarket Point of Sale System
 
 This module contains the implementation of a Point of Sale System (POS) for a supermarket. The system allows users
-to check available products, add new items to stock, check out products, and edit supermarket information. It also
-provides the functionality to generate PDF receipts for purchases.
+to check available products, add_product new items to stock, check out products, and edit supermarket information.
+It also provides the functionality to generate PDF receipts for purchases.
 
 Modules:
     - pdf-related imports
@@ -18,7 +18,7 @@ Global Variables:
 
 Functions:
     - main: The main function that initiates the Point of Sale System.
-    - add: Function to add new items to the stock.
+    - add_product: Function to add_product new items to the stock.
 """
 
 # pdf-related imports
@@ -30,7 +30,7 @@ from src.supermarket_information.supermarket_customization import SupermarketDet
 from src.supermarket_information.customizing import customize
 
 # stock-related imports
-from src.stock_management.product_registration import stock_registration
+from src.stock_management.product_registration import stock_registration as add_product
 from src.stock_management.stock_products import available_products
 
 # point of sales-related imports
@@ -57,11 +57,6 @@ def main():
     pdf_generator.start()
 
 
-# Staff only. Adding new items to stock -----
-def add():
-    return stock_registration()
-
-
 def start_point_of_sale():
     while True:
         welcome = input('0 - Check available products\n'
@@ -75,7 +70,7 @@ def start_point_of_sale():
                 available_products()
                 break
             case '1':
-                add()
+                add_product()
                 print('Thanks for using POSS! Goodbye')
                 break
             case '2':

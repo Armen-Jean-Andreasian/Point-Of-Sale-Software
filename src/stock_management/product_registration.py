@@ -5,17 +5,17 @@ This module provides functionality for adding new items to the product stock dat
 and generating stock reports in PDF format.
 
 Functions:
-    stock_registration: Interactive function to add new items to the product stock and generate stock reports.
+    stock_registration: Interactive function to add_product new items to the product stock and generate stock reports.
 
 Usage:
-    The 'stock_registration' function allows users to interactively add new items to the product stock database.
+    The 'stock_registration' function allows users to interactively add_product new items to the product stock database.
     Users can specify whether to generate stock reports or not.
 
 Examples:
-    To add new items and generate stock reports:
+    To add_product new items and generate stock reports:
     stock_registration(destination_folder='../../reports')
 
-    To add new items without generating stock reports:
+    To add_product new items without generating stock reports:
     stock_registration()
 
 """
@@ -34,7 +34,7 @@ def stock_registration(destination_folder=None):
             If not provided, the reports will be generated in the default folder. Defaults to None.
 
     Usage:
-        To add new items and generate stock reports:
+        To add_product new items and generate stock reports:
         stock_registration()
 
     Returns:
@@ -45,7 +45,7 @@ def stock_registration(destination_folder=None):
     product = tuple[int, str, float]
 
     while True:
-        welcome = input('Do you want to add new items? Y/N ').lower()
+        welcome = input('Do you want to add_product new items? Y/N ').lower()
         if welcome == 'n':
             break
         elif welcome == 'y':

@@ -11,7 +11,7 @@ Functions:
 
 Usage:
 - Import this module to access the database functions.
-- Use the functions to retrieve, add, or query product information in the database.
+- Use the functions to retrieve, add_product, or query product information in the database.
 
 Example:
 if __name__ == '__main__':
