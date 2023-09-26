@@ -5,6 +5,7 @@ from src.counter import BarcodeScanner
 
 from database.item_registration import stock_registration
 
+from src.customizing import customize
 # Point of sales -----
 current_time = Time.current_time()
 supermarket_information = SupermarketDetails.get_supermarket_details()
@@ -33,7 +34,8 @@ if __name__ == '__main__':
     while True:
         welcome = input('1 - Add items \n'
                         '2 - Check out products\n'
-                        '3 - Exit the program'
+                        '3 - Edit supermarket information\n'
+                        '4 - Exit the program\n'
                         'Your Choice: ')
         match welcome:
             case '1':
@@ -45,5 +47,10 @@ if __name__ == '__main__':
                 print('Thanks for using POSS! Goodbye')
                 break
             case '3':
+                customize()
+                break
+            case '4':
                 print('Thanks for using POSS! Goodbye')
                 break
+
+
